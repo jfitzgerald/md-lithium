@@ -25,9 +25,9 @@ node md-lithium.js file.md -d
 
 # Supported Custom MD Tokens
 
-- `NOTE: ` 
-- `TIP: `
-- `PRE: `
+- `NOTE:  //with trailing space` 
+- `TIP:  //with trailing space `
+- `PRE:  //with trailing space`
 
 ## Note
 
