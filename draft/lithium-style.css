@@ -98,6 +98,18 @@ hr {
     margin: 30px;
 }
 
+code {
+        display: inline-block;
+    background: #f7f7f5;
+    font-size: 0.90em;
+    line-height: 1.4em;
+    margin: 0px;
+    padding: 1px 5px;
+    font-family: 'Source Code Pro', monospace;
+    background-color: #E4F2F9;
+    color: #0084E6;
+}
+
 div.row {
       border: 1px solid; 
       border-color:#888;
