@@ -1,0 +1,19 @@
+{
+  "name": "md-lithium",
+  "version": "1.0.0",
+  "description": "Generate customized HTML from .md",
+  "main": "md-lithium.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Do Pham",
+  "license": "MIT",
+  "dependencies": {
+    "file-system": "^2.2.1",
+    "markdown-to-html": "0.0.13",
+    "open": "0.0.5"
+  }
+}

@@ -1,0 +1,175 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="lithium-style.css"><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><div class="container"><div class="row"><div class="col-md-10 col-md-offset-1 col-lg-10 col-md-offset-1"><h1 class="title">Local Lithium Preview</h1><h2>
+<a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
+
+<p>text</p>
+
+<h2>
+<a id="user-content-pre-requisites" class="anchor" href="#pre-requisites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pre-requisites</h2>
+
+<ul>
+<li>[XYZ Account]</li>
+<li>[XYZ Pixel ID]</li>
+<li>[Client ID]</li>
+</ul>
+
+<h2>
+<a id="user-content-tag-library-versions" class="anchor" href="#tag-library-versions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tag Library Versions</h2>
+
+<p class='tip'>It's reccomended to stay up to date with the latest versions!</p>
+
+<ul>
+<li>[v4]</li>
+<li>[v3]</li>
+<li>[v2] </li>
+</ul>
+
+<h1>
+<a id="user-content-how-to-implement" class="anchor" href="#how-to-implement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to implement</h1>
+
+<h2>
+<a id="user-content-step-1-add-the-tag" class="anchor" href="#step-1-add-the-tag" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 1. Add The Tag</h2>
+
+<p>This Tag is available in Tealium's <code>Tag Marketplace</code>. Refer to the Tags Tab article to learn how to add a Tag to your Tealium iQ profile.</p>
+
+<p class='note'>This is only a sample output of the MD &gt;&gt; Lithium Styled HTML.</p>
+
+<pre>var myStringArray = ["Hello","World"];
+var arrayLength = myStringArray.length;
+for (var i = 0; i &lt; arrayLength; i++) {
+    alert(myStringArray[i]);
+    //Do something
+}</pre>
+
+<p>[insert screenshot of Tag being added from the Tag Marketplace]</p>
+
+<h2>
+<a id="user-content-step-2-configure-the-settings" class="anchor" href="#step-2-configure-the-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 2. Configure the settings</h2>
+
+<ol>
+<li><p>Title: Enter a unique name to identify the Tag. This is important if you are adding multiple instances of this Tag.</p></li>
+<li><p>[Param XYZ]: [insert description here]</p></li>
+<li>
+<p>[Dropdown XYZ]: [insert description here] </p>
+
+<ul>
+<li>[sub-list item #1]: [insert description].</li>
+<li>[sub-list item #1]: [insert description]. </li>
+</ul>
+</li>
+</ol>
+
+<h2>
+<a id="user-content-step-3-apply-load-rules" class="anchor" href="#step-3-apply-load-rules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 3. Apply Load Rules</h2>
+
+<p><a href="https://cxommunity.tealiumiq.com/t5/Getting-Started/Load-Rules-Creation/ta-p/9422">Load Rules</a> determine when and where to load an instance of this Tag on your site. The 'Load on All Pages' rule is the default Load Rule. To load this Tag on a specific page, create relevant Rule conditions to apply to the Tag.</p>
+
+<h2>
+<a id="user-content-best-practice-insert-text" class="anchor" href="#best-practice-insert-text" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Best Practice [insert text].</h2>
+
+<h2>
+<a id="user-content-step-4-set-up-data-mappings" class="anchor" href="#step-4-set-up-data-mappings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 4. Set up Data Mappings</h2>
+
+<p>Mapping is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag. The destination variables for this Tag are available in the Data Mapping toolbox and are grouped in different categories for ease of use.</p>
+
+<p><strong>For instructions on how to map a Data Source to a Tag destination, see <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/Variable-Types-formerly-Data-Sources/ta-p/10645#mapping_data_sources">Mapping Data Sources</a></strong></p>
+
+<p><strong>[Category #1]</strong></p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Destination Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destination #1</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>destination #2</td>
+<td>Description</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>[Category #2]</strong></p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Destination Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destination #1</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>destination #2</td>
+<td>Description</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="user-content-e-commerce" class="anchor" href="#e-commerce" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>E-Commerce</h2>
+
+<p>[Map to these destinations for sending ecommerce–specific Data Layer variables. We typically recommend using <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/E-Commerce-Extension-Installation-and-Setup/ta-p/11927">Tealium's E-Commerce Extension</a> for this purpose. Why? When it is properly configured, the Extension automatically maps your variables to the appropriate destinations for all E-Commerce enabled Tags in your profile. That way you don't have to map those variables over and over for every one of your Tag. If you, however, decide to override any Extension variable, or otherwise your variables are not available to the Extension, you must manually map a data source to its destination using the toolbox.]</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Destination Name</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>E-Commerce Extension (RECOMMENDED</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Order ID]</td>
+<td>Description</td>
+<td>["_corder" maps to this destination]</td>
+</tr>
+<tr>
+<td>[Sub Total]</td>
+<td>Description</td>
+<td>["_csubtotal" maps to this destination]</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events</h2>
+
+<p>Map to these destinations for triggering specific events on a page.[insert description as needed.]</p>
+
+<p>Here's how to map an event:</p>
+
+<ol>
+<li>Select an event from the dropdown list. You may choose from the pre-defined list or create a 'Custom' event.
+For 'Custom' event, enter a name with which to identify it.</li>
+<li>In the 'Trigger' field, enter the value of the Data Source you are mapping to this destination. When the value is found, the event will trigger on the page.</li>
+<li>To map more events, click the + button and repeat steps #1 and #2.</li>
+<li>Click 'Apply'.
+[insert screenshot]</li>
+</ol>
+
+<h2>
+<a id="user-content-step-5-save-and-publish" class="anchor" href="#step-5-save-and-publish" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 5. Save and publish</h2>
+
+<p>That's it! You have successfully set up the Tag in your profile.</p>
+
+<p>[insert screenshot here]</p>
+
+<h1>
+<a id="user-content-vendor-documentation" class="anchor" href="#vendor-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vendor Documentation</h1>
+
+<p>[insert doc link]
+[insert doc link]
+[insert doc link]</p>
+
+</div></div></div><br>

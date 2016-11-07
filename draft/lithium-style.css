@@ -1,0 +1,169 @@
+body {
+      font-family: "Roboto", "Helvetica Neue";
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.4em;
+    color: #444;
+        word-wrap: break-word;
+            direction: ltr;
+}
+table {
+    width: 100%;
+    max-width: 100%;
+    border: 0px;
+        border-collapse: collapse;
+    border-spacing: 0;
+        text-align: left;
+            background-color: #FFFFFF;
+}
+tr {
+      border-collapse: collapse;
+          font-family: "Roboto", "Helvetica Neue";
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.4em;
+    color: #444;
+}
+td{
+  min-width: 150px;
+  padding: 5px 10px;
+    line-height: 1.3em;
+        border: 1px solid #E5E5E5;
+}
+
+th {
+      font-weight: 500;
+    background-color: #EEE;
+    padding: 5px 10px;
+        border: 1px solid #E5E5E5;
+    line-height: 15px;
+}
+
+
+img {
+    border: 1px solid #DDD;
+    padding: 2px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    line-height: inherit;
+    font-weight: normal;
+    margin: 1em 0em;
+    color: #00588B;
+    font-family: "Roboto", "Helvetica Neue";
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #666;
+    font-family: "Roboto", "Helvetica Neue";
+    margin-top: 2em;
+    border-bottom: 1px solid #EEE;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 1.5em;
+    margin-bottom: 0.6em;
+    color: #333;
+    font-family: "Roboto", "Helvetica Neue";
+}
+
+h4 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    color: #666;
+    font-family: "Roboto", "Helvetica Neue";
+}
+
+li {
+    margin: 5px 0px;
+        display: list-item;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #EEE;
+    margin: 30px;
+}
+
+div.row {
+      border: 1px solid; 
+      border-color:#888;
+    border-radius: 5px;
+}
+
+h1.title {
+      font-size: 30px;
+    line-height: 36px;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-weight: bold;
+        color: #222;
+}
+
+p.tip {
+      border-left: 3px solid #519f15;
+    padding: 30px 10px 10px 20px !important;
+    position: relative;
+    background-color: #f3f9f5;
+    border-radius: 0px;
+    box-shadow: 0px 5px 3px -4px rgba(0,0,0,0.3);
+}
+
+p.tip:before {
+    content: "\f005";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-family: "FontAwesome";
+    font-size: 1.2em;
+    color: #519f15;
+}
+p.tip:after {
+    content: "Tip";
+    position: absolute;
+    top: 4px;
+    left: 35px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #519f15;
+}
+
+p.note {
+    border-left: 3px solid #ff9d1f;
+    padding: 30px 10px 10px 20px !important;
+    position: relative;
+    background-color: #fff3e5;
+    border-radius: 0px;
+    box-shadow: 0px 5px 3px -4px rgba(0,0,0,0.3);
+  }
+p.note:before {
+    content: "\f05a";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-family: "FontAwesome";
+    font-size: 1.2em;
+    color: #ff9d1f;
+}
+
+p.note:after {
+    content: "Note";
+    position: absolute;
+    top: 4px;
+    left: 35px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #ff9d1f;
+}
