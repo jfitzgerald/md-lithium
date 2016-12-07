@@ -1,4 +1,5 @@
 //Currently does not support embedded lithium stylings ie Code inside of TIP.  Can be added if requested, requires brief reconstruction.
+// Currently does not support multiple S3 hosted images in one line, support will be added next iteration.
 
 var Markdown = require('markdown-to-html').GithubMarkdown;
 var md = new Markdown();
@@ -34,12 +35,22 @@ var editLithium = function(line, outputTarget, outputDraft) {
   var token;
   var editClassNeeded = false;
   var editElementNeeded = false;
+  var imageRoot = "http://images.tealiumiq.com/documentation-integrations";
+
+  //Image handling
+  //TODO: Handle side by side images by abstracting image test into a function and loop.
+  var containsRelativeImage = /="(\/client\/.+?)"|(\/server\/.+?)"|(\/mobile\/.+?)"/.test(line);
+  if (containsRelativeImage) {
+    //Replace path, but only if it has an image extension
+    var relativeImagePath = /="(\/.+?)\.(?:gif|jpg|jp?g|tiff|png|svg)"/.exec(line);
+    line = line.replace(new RegExp(relativeImagePath[1], 'g'), imageRoot+relativeImagePath[1]);
+  }
+
   //Check for class attr
   if (line.search("<p class=") !== -1) {
     hasClassAttr = true;
   }
-  //Will need to make into a function taking in all p classes
-  // TIP
+
   if (line.search("TIP: ") !== -1) {
     tokenIdx = line.search("TIP: ");
     tokenLength = 5;

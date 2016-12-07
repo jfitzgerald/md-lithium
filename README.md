@@ -22,9 +22,19 @@ node md-lithium.js [file.md] [flag]
 node md-lithium.js file.md -d
 ```
 
+# Images
+As of now, images are hosted on the integration-documentation S3 bucket.
+To embed screenshots or other images into your md file, use the standard md image syntax with a relative path to the integration folder where the images are.
+
+For a Tealium custom container documentation, the image path might be:
+
+`/client/custom_container/ui_config.jpg`
+
+In md, it'd be:
+
+`![](/client/custom_container/ui_config.jpg)`
 
 # Supported Custom MD Tokens
-
 - `NOTE:  //with trailing space` 
 - `TIP:  //with trailing space `
 - `PRE:  //with trailing space`
