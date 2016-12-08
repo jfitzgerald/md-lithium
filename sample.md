@@ -67,7 +67,7 @@ destination #2| Description
 ##E-Commerce
 [Map to these destinations for sending ecommerce–specific Data Layer variables. We typically recommend using [Tealium's E-Commerce Extension](https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/E-Commerce-Extension-Installation-and-Setup/ta-p/11927) for this purpose. Why? When it is properly configured, the Extension automatically maps your variables to the appropriate destinations for all E-Commerce enabled Tags in your profile. That way you don't have to map those variables over and over for every one of your Tag. If you, however, decide to override any Extension variable, or otherwise your variables are not available to the Extension, you must manually map a data source to its destination using the toolbox.]
 
-**Destination Name**  | **Description**| **E-Commerce Extension (RECOMMENDED**
+**Destination Name**  | **Description**| **E-Commerce Extension (RECOMMENDED)**
 ------------- | -------------|---
 [Order ID]   | Description  |["_corder" maps to this destination]
 [Sub Total]| Description  | ["_csubtotal" maps to this destination]

@@ -41,7 +41,7 @@ In md, it'd be:
 
 ## Note
 
-For custom tokens, the trailing space is required.  For example, to include a preprocessed code block in your .md file:
+For custom tokens, the trailing space is required.  For example, to include a preformatted code block in your .md file:
 
 ```
 PRE: var myStringArray = ["Hello","World"];
