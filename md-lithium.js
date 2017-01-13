@@ -94,8 +94,6 @@ var editLithium = function(line, outputTarget, outputDraft) {
     unclosedTags.push("</" + token +">");
   }
 
-
-  
   //Need to prettify html?
   line += "\n";
   outputTarget.write(line);
@@ -104,8 +102,6 @@ var editLithium = function(line, outputTarget, outputDraft) {
   }
   //return line;
 };
-
-
 
 console.log('Processing...');
 
@@ -148,7 +144,6 @@ md.once('end', function() {
     });
   }
 
-
   console.log('Starting custom Lithium styled HTML generation.');
 
   var rd = readline.createInterface({
@@ -156,6 +151,7 @@ md.once('end', function() {
     output: process.stdout,
     terminal: false
 });
+
   var targetStream = fs.createWriteStream(finalOutputName, {'flags': 'a'});
 
   if (draft) {
