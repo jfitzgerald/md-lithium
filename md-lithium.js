@@ -96,6 +96,10 @@ var editLithium = function(line, outputTarget, outputDraft) {
 
   //Need to prettify html?
   line += "\n";
+  //remove auto generated
+   if (line.indexOf('id="user-content-') !== -1){
+    line = line.replace('user-content-', "");
+  }
   outputTarget.write(line);
   if (draft) {
     outputDraft.write(line);
