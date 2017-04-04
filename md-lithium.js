@@ -43,7 +43,9 @@ var editLithium = function(line, outputTarget, outputDraft) {
   if (containsRelativeImage) {
     //Replace path, but only if it has an image extension
     var relativeImagePath = /="(\/.+?)\.(?:gif|jpg|jp?g|tiff|png|svg)"/.exec(line);
-    line = line.replace(new RegExp(relativeImagePath[1], 'g'), imageRoot+relativeImagePath[1]);
+    if (relativeImagePath !== null){
+      line = line.replace(new RegExp(relativeImagePath[1], 'g'), imageRoot+relativeImagePath[1]);
+    }
   }
 
   //Check for class attr
@@ -98,7 +100,7 @@ var editLithium = function(line, outputTarget, outputDraft) {
   line += "\n";
   //remove auto generated
    if (line.indexOf('id="user-content-') !== -1){
-    line = line.replace('user-content-', "");
+     line = line.replace('user-content-', "");
   }
   outputTarget.write(line);
   if (draft) {
