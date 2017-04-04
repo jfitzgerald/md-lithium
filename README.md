@@ -14,7 +14,7 @@ With the .md to be converted in the md-lithium root folder:
 ```
 node md-lithium.js [file.md] [flag]
 ```
-
+The result will be placed in the output folder.
 
 `md-lithium` takes an optional flag to open a local draft of the recently converted HTML:
 
