@@ -38,11 +38,11 @@ In md, it'd be:
 - `NOTE:  //with trailing space` 
 - `TIP:  //with trailing space `
 - `PRE:  //with trailing space`
-- `S_PRE:  //with trailing space`
+- `S_PRE: //with trailing space`
 
 ## Note
 
-For custom tokens, the trailing space is required.  For example, to include a preformatted code block in your .md file:
+For custom tokens, the trailing space is required. For preformatted code blocks `PRE: ` and `S_PRE: `, close them with `:PRE` or `:S_PRE` respectively.   For example, to include a code block in your .md file:
 
 ```
 PRE: var myStringArray = ["Hello","World"];
@@ -50,4 +50,7 @@ var arrayLength = myStringArray.length;
 for (var i = 0; i < arrayLength; i++) {
     alert(myStringArray[i]);
 }
+
+console.log("All Done!")
+:PRE
 ```

@@ -81,9 +81,12 @@ var editLithium = function(line, outputTarget, outputDraft) {
 
 
   // ******* Closing Edit *******
+  // Find the token closer and replace it with the unclosed tag
   if (unclosedTags.length>0) {
-    if (line.search("</p>") !== -1) {
-      line = line.replace("</p>", unclosedTags.pop());
+    if ((line.search(":PRE") !== -1) ) {
+      line = line.replace(":PRE", unclosedTags.pop());
+    } else if (line.search(":S_PRE") !== -1){
+      line = line.replace(":S_PRE", unclosedTags.pop());
     }
   }
 
