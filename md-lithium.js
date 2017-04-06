@@ -61,6 +61,10 @@ var editLithium = function(line, outputTarget, outputDraft) {
     tokenIdx = line.search("NOTE: ");
     tokenLength = 6;
     editClassNeeded = true;
+  }else if ((line.search("S_PRE: ") !== -1)){
+    tokenIdx = line.search("S_PRE: ");
+    tokenLength = 7;
+    editElementNeeded = true;
   } else if (line.search("PRE: ") !== -1){
     tokenIdx = line.search("PRE: ");
     tokenLength = 5;
@@ -74,6 +78,7 @@ var editLithium = function(line, outputTarget, outputDraft) {
     //Strip token from line 'TIP: Start of line' :: 'Start of line'
     line = line.replace((line.substr(tokenIdx, tokenLength)), "");
   }
+
 
   // ******* Closing Edit *******
   if (unclosedTags.length>0) {
@@ -91,7 +96,13 @@ var editLithium = function(line, outputTarget, outputDraft) {
       line = line.replace("<p>","<p class='" + token +"'>");
     }
   } else if (editElementNeeded) {
-    line = line.replace("<p>","<" + token +">");
+    //Add support for colorized code blocks (simple_pre)
+    var openToken = token;
+    if (openToken === "s_pre") {
+      openToken = "pre class='simple_pre'";
+      token = "pre";
+    }
+    line = line.replace("<p>","<" + openToken +">");
     //skipLine = true;
     unclosedTags.push("</" + token +">");
   }

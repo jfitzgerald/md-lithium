@@ -38,6 +38,7 @@ In md, it'd be:
 - `NOTE:  //with trailing space` 
 - `TIP:  //with trailing space `
 - `PRE:  //with trailing space`
+- `S_PRE:  //with trailing space`
 
 ## Note
 

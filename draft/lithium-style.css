@@ -179,3 +179,6 @@ p.note:after {
     font-weight: 500;
     color: #ff9d1f;
 }
+pre.simple_pre {
+    color: #066;
+}
