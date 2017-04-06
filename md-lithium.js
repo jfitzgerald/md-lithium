@@ -102,6 +102,10 @@ var editLithium = function(line, outputTarget, outputDraft) {
    if (line.indexOf('id="user-content-') !== -1){
      line = line.replace('user-content-', "");
   }
+  // Forcing all links to open new tab
+  if(line.indexOf('a href') !== -1) {
+    line = line.replace('a href', 'a target="_blank" href');
+  }
   outputTarget.write(line);
   if (draft) {
     outputDraft.write(line);
