@@ -206,7 +206,11 @@ md.once('end', function() {
     
     console.log("Markdown to Lithium Styled HTML complete.");
     
-    fs.unlink(rawOutputFileName);
+    fs.unlink(rawOutputFileName, function (err){
+      if (err){
+        console.log("No raw output file");
+      }
+    });
   });
 
 });
