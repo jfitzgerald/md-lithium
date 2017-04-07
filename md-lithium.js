@@ -106,8 +106,15 @@ var editLithium = function(line, outputTarget, outputDraft) {
       token = "pre";
     }
     line = line.replace("<p>","<" + openToken +">");
-    //skipLine = true;
-    unclosedTags.push("</" + token +">");
+    //Check same line for closing
+    if ((line.search(":PRE") !== -1) ) {
+      line = line.replace(":PRE", "</pre>");
+    } else if (line.search(":S_PRE") !== -1) {
+      line = line.replace(":S_PRE", "</pre>");
+    } else {
+      //Multi line block
+      unclosedTags.push("</" + token +">");
+    }
   }
 
   //Need to prettify html?
