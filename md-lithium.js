@@ -95,7 +95,8 @@ var editLithium = function(line, outputTarget, outputDraft) {
     line = line.replace('<pre>SIMPLE', '<pre class="simple_pre">');
   }
   // Forcing all links to open new tab
-  if (line.indexOf('a href') !== -1) {
+  // EXCEPT anchor jumps
+  if ((line.indexOf('a href')) !== -1 && (line.indexOf('(#') === -1)) {
     line = line.replace('a href', 'a target="_blank" href');
   }
   outputTarget.write(line);
