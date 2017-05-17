@@ -15,8 +15,7 @@ var args = process.argv.slice(2);
 var fileName = args[0];
 var flagArr = args.slice(1);
 //Check for destination
-console.log(flagArr);
-if ((flagArr.length>0) && (flagArr[0].indexOf("/") !== -1)) {
+if ((flagArr.length>0) && (flagArr[0].indexOf("-") == -1) && (flagArr[0].length !== 2)) {
   //Destination
   var destArg = flagArr[0];
   //Slash check
@@ -27,7 +26,6 @@ if ((flagArr.length>0) && (flagArr[0].indexOf("/") !== -1)) {
 //Check for file name vs path
 var dest = destArg || "output/";
 if (fileName.indexOf("/") !== -1) {
-  console.log("pathh detected");
   console.log(fileName);
   var pathArr = fileName.split("/");
   var onlyFileName = pathArr[pathArr.length-1];

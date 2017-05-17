@@ -10,17 +10,19 @@ npm install
 ```
 
 # Usage
-With the .md to be converted in the md-lithium root folder:
+Running:
 ```
-node md-lithium.js [file.md] [flag]
+node md-lithium.js [folder/file.md] [folder/destination] [flag]
 ```
-The result will be placed in the output folder.
+If no destination is provided, the result will be placed in the script's root output folder.
 
 `md-lithium` takes an optional flag to open a local draft of the recently converted HTML:
 
 ```
-node md-lithium.js file.md -d
+node md-lithium.js folder/file.md -d
 ```
+
+
 
 # Images
 As of now, images are hosted on the integration-documentation S3 bucket.
