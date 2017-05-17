@@ -6,15 +6,40 @@ var md = new Markdown();
 var fs = require('file-system');
 var open = require('open');
 var readline = require('readline');
+var path = require('path');
+
 //May need to be changed
 md.bufmax = 2048;
 //Normalize args
 var args = process.argv.slice(2);
 var fileName = args[0];
 var flagArr = args.slice(1);
-var rawOutputFileName = fileName.slice(0, -3) + "-raw.html";
-var finalOutputName = "output/" + fileName.slice(0, -3) + ".html";
-console.log(finalOutputName)
+//Check for destination
+console.log(flagArr);
+if ((flagArr.length>0) && (flagArr[0].indexOf("/") !== -1)) {
+  //Destination
+  var destArg = flagArr[0];
+  //Slash check
+  if (destArg[destArg.length -1] !== "/") {
+    destArg += "/";
+  }
+}
+//Check for file name vs path
+var dest = destArg || "output/";
+if (fileName.indexOf("/") !== -1) {
+  console.log("pathh detected");
+  console.log(fileName);
+  var pathArr = fileName.split("/");
+  var onlyFileName = pathArr[pathArr.length-1];
+  var rawOutputFileName = onlyFileName.slice(0, -3) + "-raw.html";
+  var finalOutputName = dest + onlyFileName.slice(0, -3) + ".html";
+} else {
+  var rawOutputFileName = fileName.slice(0, -3) + "-raw.html";
+  var finalOutputName = dest + fileName.slice(0, -3) + ".html";
+}
+
+console.log(finalOutputName);
+
 var opts = {
   flavor: 'markdown'
 };
@@ -191,6 +216,10 @@ md.once('end', function() {
 
   var targetStream = fs.createWriteStream(finalOutputName, {
     'flags': 'a'
+  }, function(err){
+    if (err) {
+      console.log("Output folder doesn't exist");
+    }
   });
 
   if (draft) {
