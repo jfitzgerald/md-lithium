@@ -15,7 +15,7 @@ var args = process.argv.slice(2);
 var fileName = args[0];
 var flagArr = args.slice(1);
 //Check for destination
-if ((flagArr.length>0) && (flagArr[0].indexOf("-") == -1) && (flagArr[0].length !== 2)) {
+if ((flagArr.length>0) && (flagArr[0].length !== 2)) {
   //Destination
   var destArg = flagArr[0];
   //Slash check
