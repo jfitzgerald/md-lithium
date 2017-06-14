@@ -47,6 +47,7 @@ var draft = false;
 //Used for replacing non-same line HTML tags
 var skipLine = false;
 var unclosedTags = [];
+var preBlockFlag = false;
 
 var editLithium = function(line, outputTarget, outputDraft) {
   //Custom lithium edits, line by line. Looking for keywords like maybe @@TIP
@@ -114,9 +115,13 @@ var editLithium = function(line, outputTarget, outputDraft) {
   if (line.indexOf('id="user-content-') !== -1) {
     line = line.replace('user-content-', "");
   }
+
+  // Handle PRE blocks
   if (line.indexOf('<pre>SIMPLE') !== -1) {
     line = line.replace('<pre>SIMPLE', '<pre class="simple_pre">');
   }
+
+
   // Forcing all links to open new tab
   // EXCEPT anchor jumps
   if ((line.indexOf('a href')) !== -1 && (line.indexOf('href="#') === -1)) {
@@ -152,21 +157,37 @@ var postprocess = readline.createInterface({
   terminal: false
 });
 
-postprocess.on('line', function(preproccessed) {
-  if ((preproccessed.search("S_PRE: ") !== -1)) {
+postprocess.on('line', function(preprocessed) {
+  // Encode on the lines with Opening HTML tags.
+  if ((preprocessed.search("S_PRE: ") !== -1)) {
     // The third party node module doesn't allow for non standard HTML tags, so we will flag this pre tag and replace it later.
-    preproccessed = preproccessed.replace("S_PRE: ", '<pre>SIMPLE');
+    preprocessed = preprocessed.replace("S_PRE: ", '<pre>SIMPLE');
+    preprocessed = preprocessed.replace('<', '&lt;');
+    preBlockFlag = true;
   }
-  if (preproccessed.search(":S_PRE") !== -1) {
-    preproccessed = preproccessed.replace(":S_PRE", "</pre>");
+  if (preprocessed.search(":S_PRE") !== -1) {
+    preprocessed = preprocessed.replace('<', '&lt;');
+    preprocessed = preprocessed.replace(":S_PRE", "</pre>");
+        preBlockFlag = false;
   }
-  if ((preproccessed.search("PRE: ") !== -1)) {
-    preproccessed = preproccessed.replace("PRE: ", "<pre>");
+  if ((preprocessed.search("PRE: ") !== -1)) {
+    preprocessed = preprocessed.replace('<', '&lt;');
+    preprocessed = preprocessed.replace("PRE: ", "<pre>");
+    preBlockFlag = true;
   }
-  if ((preproccessed.search(":PRE") !== -1)) {
-    preproccessed = preproccessed.replace(":PRE", "</pre>");
+  if ((preprocessed.search(":PRE") !== -1)) {
+    preprocessed = preprocessed.replace('<', '&lt;');
+    preprocessed = preprocessed.replace(":PRE", "</pre>");
+        preBlockFlag = false;
   }
-  postProcessed.write(preproccessed + "\n");
+  //Encode within PRE blocks
+  if ((preprocessed.indexOf('<') !== -1) && preBlockFlag) {
+    if ((preprocessed.search('<pre>') == -1) && (preprocessed.search('</pre>') == -1)){
+      preprocessed = preprocessed.replace('<', '&lt;');
+    }
+  }
+  
+  postProcessed.write(preprocessed + "\n");
 });
 postprocess.on('close', function() {
 

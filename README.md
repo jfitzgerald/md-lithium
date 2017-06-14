@@ -44,7 +44,7 @@ In md, it'd be:
 
 ## Note
 
-For custom tokens, the trailing space is required. For preformatted code blocks `PRE: ` and `S_PRE: `, close them with `:PRE` or `:S_PRE` respectively.   For example, to include a code block in your .md file:
+For custom tokens, the trailing space is required. For preformatted code blocks `PRE: ` and `S_PRE: `, close them with `:PRE` or `:S_PRE` respectively.  These closing tags should not be on the same line as the openers.   For example, to include a code block in your .md file:
 
 ```
 PRE: var myStringArray = ["Hello","World"];
