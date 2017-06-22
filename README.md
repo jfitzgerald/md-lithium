@@ -1,7 +1,7 @@
 
 # md-lithium
 
-Takes a .md file and converts it to Tealium's custom Lithium styled HTML.
+Converts a markdown (*.md) file into Tealium's custom Lithium-styled HTML.
 
 # Installation
 Install all dependencies with:
@@ -14,15 +14,13 @@ Running:
 ```
 node md-lithium.js [folder/file.md] [folder/destination] [flag]
 ```
-If no destination is provided, the result will be placed in the script's root output folder.
+If no folder destination is provided, the resulting HTML will be placed in the script's root output folder.
 
 `md-lithium` takes an optional flag to open a local draft of the recently converted HTML:
 
 ```
 node md-lithium.js folder/file.md -d
 ```
-
-
 
 # Images
 As of now, images are hosted on the integration-documentation S3 bucket.
@@ -37,22 +35,51 @@ In md, it'd be:
 `![](/client/custom_container/ui_config.jpg)`
 
 # Supported Custom MD Tokens
-- `NOTE:  //with trailing space` 
-- `TIP:  //with trailing space `
-- `PRE:  //with trailing space`
-- `S_PRE: //with trailing space`
+- `NOTE: //with trailing space` 
+- `TIP: //with trailing space `
+- `PRE: //without trailing space`
+- `S_PRE: //without trailing space`
 
-## Note
-
-For custom tokens, the trailing space is required. For preformatted code blocks `PRE: ` and `S_PRE: `, close them with `:PRE` or `:S_PRE` respectively.  These closing tags should not be on the same line as the openers.   For example, to include a code block in your .md file:
+## Using Note/Tip
+Make sure to add a space after the colon. Because there are no opening or closing tokens, the md script converter keys off of the whitespace to render the CSS. Here's a simple example:
 
 ```
-PRE: var myStringArray = ["Hello","World"];
-var arrayLength = myStringArray.length;
-for (var i = 0; i < arrayLength; i++) {
-    alert(myStringArray[i]);
-}
+NOTE: lorem ipsum
+TIP: lorem ipsum
+```
+## Using Preformatted Code Blocks
+Use `PRE:` and `S_PRE:` tokens for code blocks. Close them with `:PRE` or `:S_PRE` respectively.  The tokens should be placed alone in a line, and not on the same line as any code. 
 
+### Do This
+```
+PRE:
 console.log("All Done!")
 :PRE
+```
+
+### Not This
+```
+PRE: console.log("All Done!") :PRE
+```
+
+## Not Recommended
+The converter script will parse any code block where either the opening or closing token is inline with the code, however it is not recommended.
+```
+PRE: console.log("All Done!") 
+:PRE
+```
+
+```
+S_PRE: console.log("All Done!") 
+:S_PRE
+```
+
+```
+PRE: 
+console.log("All Done!") :PRE
+```
+
+```
+S_PRE: 
+console.log("All Done!") :S_PRE 
 ```

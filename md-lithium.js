@@ -159,10 +159,10 @@ var postprocess = readline.createInterface({
 
 postprocess.on('line', function(preprocessed) {
   // Encode on the lines with Opening HTML tags.
-  if ((preprocessed.search("S_PRE: ") !== -1)) {
+  if ((preprocessed.search("S_PRE:") !== -1)) {
     // The third party node module doesn't allow for non standard HTML tags, so we will flag this pre tag and replace it later.
-    preprocessed = preprocessed.replace("S_PRE: ", '<pre>SIMPLE');
     preprocessed = preprocessed.replace('<', '&lt;');
+    preprocessed = preprocessed.replace("S_PRE:", '<pre>SIMPLE');
     preBlockFlag = true;
   }
   if (preprocessed.search(":S_PRE") !== -1) {
@@ -170,9 +170,9 @@ postprocess.on('line', function(preprocessed) {
     preprocessed = preprocessed.replace(":S_PRE", "</pre>");
         preBlockFlag = false;
   }
-  if ((preprocessed.search("PRE: ") !== -1)) {
+  if ((preprocessed.search("PRE:") !== -1)) {
     preprocessed = preprocessed.replace('<', '&lt;');
-    preprocessed = preprocessed.replace("PRE: ", "<pre>");
+    preprocessed = preprocessed.replace("PRE:", "<pre>");
     preBlockFlag = true;
   }
   if ((preprocessed.search(":PRE") !== -1)) {
@@ -186,7 +186,6 @@ postprocess.on('line', function(preprocessed) {
       preprocessed = preprocessed.replace('<', '&lt;');
     }
   }
-  
   postProcessed.write(preprocessed + "\n");
 });
 postprocess.on('close', function() {
