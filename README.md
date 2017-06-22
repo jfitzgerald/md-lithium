@@ -62,7 +62,7 @@ console.log("All Done!")
 PRE: console.log("All Done!") :PRE
 ```
 
-## Not Recommended
+### Not Recommended
 The converter script will parse any code block where either the opening or closing token is inline with the code, however it is not recommended.
 ```
 PRE: console.log("All Done!") 
