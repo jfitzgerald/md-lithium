@@ -22,6 +22,8 @@ If no folder destination is provided, the resulting HTML will be placed in the s
 
 `node md-lithium.js folder/file.md -p` Creates a Lithium-styled PDF of the document along with the converted HTML
 
+`node md-lithium.js folder/file.md -c` Copies the converted HTML to your clipboard for quick pasting into Lithium
+
 # Images
 As of now, images are hosted on the integration-documentation S3 bucket.
 To embed screenshots or other images into your md file, use the standard md image syntax with a relative path to the integration folder where the images are.

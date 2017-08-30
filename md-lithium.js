@@ -8,6 +8,7 @@ var fs = require('file-system');
 var open = require('open');
 var readline = require('readline');
 var path = require('path');
+var ncp = require("copy-paste");
 
 //May need to be changed
 md.bufmax = 2048;
@@ -48,6 +49,7 @@ var opts = {
 //flags
 var draft = false;
 var pdf = false;
+var clipboard = false;
 //Used for replacing non-same line HTML tags
 var skipLine = false;
 var unclosedTags = [];
@@ -148,6 +150,11 @@ if (flagArr.indexOf('-d') !== -1) {
 if (flagArr.indexOf('-p') !== -1) {
   pdf = true;
 }
+
+if (flagArr.indexOf('-c') !== -1) {
+  clipboard = true;
+}
+
 
 //Pre process code blocks
 fs.unlink("post-processed.md", function(err) {
@@ -272,6 +279,12 @@ md.once('end', function() {
 
     console.log("Markdown to Lithium Styled HTML complete.");
 
+    if (clipboard) {
+      var stream = fs.createReadStream(finalOutputName);
+      ncp.copy(stream, function () {
+        console.log("HTML copied to clipboard.")
+      });
+    }
 
     if (pdf) {
         var pdfOptions = {
