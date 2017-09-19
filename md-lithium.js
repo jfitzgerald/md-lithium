@@ -2,11 +2,13 @@
 // Currently does not support multiple S3 hosted images in one line, support will be added next iteration.
 //Redo process of parsing, it should be done before the md.lithium script
 var Markdown = require('markdown-to-html').GithubMarkdown;
+var markdownpdf = require("markdown-pdf");
 var md = new Markdown();
 var fs = require('file-system');
 var open = require('open');
 var readline = require('readline');
 var path = require('path');
+var ncp = require("copy-paste");
 
 //May need to be changed
 md.bufmax = 2048;
@@ -31,9 +33,11 @@ if (fileName.indexOf("/") !== -1) {
   var onlyFileName = pathArr[pathArr.length-1];
   var rawOutputFileName = onlyFileName.slice(0, -3) + "-raw.html";
   var finalOutputName = dest + onlyFileName.slice(0, -3) + ".html";
+  var finalPdfName = dest + onlyFileName.slice(0, -3) + ".pdf";
 } else {
   var rawOutputFileName = fileName.slice(0, -3) + "-raw.html";
   var finalOutputName = dest + fileName.slice(0, -3) + ".html";
+  var finalPdfName = dest + fileName.slice(0, -3) + ".pdf";
 }
 
 console.log(finalOutputName);
@@ -44,6 +48,8 @@ var opts = {
 
 //flags
 var draft = false;
+var pdf = false;
+var clipboard = false;
 //Used for replacing non-same line HTML tags
 var skipLine = false;
 var unclosedTags = [];
@@ -55,7 +61,7 @@ var editLithium = function(line, outputTarget, outputDraft) {
   // console.log(line);
   // console.log(" ");
   var hasClassAttr = false;
-  //Used to replace tokens 
+  //Used to replace tokens
   var tokenIdx = 0;
   var tokenLength;
   var token;
@@ -141,10 +147,19 @@ if (flagArr.indexOf('-d') !== -1) {
   draft = true;
 }
 
+if (flagArr.indexOf('-p') !== -1) {
+  pdf = true;
+}
+
+if (flagArr.indexOf('-c') !== -1) {
+  clipboard = true;
+}
+
+
 //Pre process code blocks
 fs.unlink("post-processed.md", function(err) {
   if (err) {
-    //console.log("Post Prcoess file not found.");
+    //console.log("Post Process file not found.");
   }
 });
 var postProcessed = fs.createWriteStream('post-processed.md', {
@@ -249,6 +264,7 @@ md.once('end', function() {
     console.log("writing styles");
     draftStream.write('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="lithium-style.css"><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><div class="container"><div class="row"><div class="col-md-10 col-md-offset-1 col-lg-10 col-md-offset-1"><h1 class="title">Local Lithium Preview</h1>');
   }
+
   rd.on('line', function(line) {
     editLithium(line, targetStream, draftStream);
     //console.log("-" + line);
@@ -263,11 +279,34 @@ md.once('end', function() {
 
     console.log("Markdown to Lithium Styled HTML complete.");
 
+    if (clipboard) {
+      var stream = fs.createReadStream(finalOutputName);
+      ncp.copy(stream, function () {
+        console.log("HTML copied to clipboard.")
+      });
+    }
+
+    if (pdf) {
+        var pdfOptions = {
+            cssPath: "draft/lithium-pdf.css",
+            paperBorder: "30px"
+        };
+
+        console.log("Generating PDF...");
+
+        markdownpdf(pdfOptions)
+        .from(fileName)
+        .to(finalPdfName, function () {
+          console.log("Generated PDF at "+finalPdfName+".");
+        });
+      }
+
     fs.unlink(rawOutputFileName, function(err) {
       if (err) {
         console.log("No raw output file");
       }
     });
+
     //Delete post process
     fs.unlink("post-processed.md", function(err) {
       if (err) {
